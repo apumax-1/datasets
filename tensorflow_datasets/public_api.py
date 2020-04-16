@@ -24,7 +24,6 @@ from tensorflow_datasets import core
 from tensorflow_datasets.core import download
 from tensorflow_datasets.core import decode
 from tensorflow_datasets.core import features
-from tensorflow_datasets.core import file_format_adapter as file_adapter
 from tensorflow_datasets.core import units
 from tensorflow_datasets.core import visualization
 from tensorflow_datasets.core.dataset_utils import as_numpy
@@ -32,7 +31,6 @@ from tensorflow_datasets.core.download import GenerateMode
 from tensorflow_datasets.core.registered import builder
 from tensorflow_datasets.core.registered import list_builders
 from tensorflow_datasets.core.registered import load
-from tensorflow_datasets.core.splits import percent
 from tensorflow_datasets.core.splits import Split
 from tensorflow_datasets.core.utils.gcs_utils import is_dataset_on_gcs
 from tensorflow_datasets.core.utils.read_config import ReadConfig
@@ -45,6 +43,9 @@ with core.registered.skip_registration():
   # (e.g. DummyMnist,...).
   from tensorflow_datasets import testing
 
+NamedSplit = Split  # TODO(epot): Remove once users are migrated.
+SplitBase = Split
+
 
 __all__ = [
     "core",
@@ -52,15 +53,15 @@ __all__ = [
     "decode",
     "download",
     "features",
-    "file_adapter",
     "units",
     "GenerateMode",
     "builder",
     "list_builders",
     "load",
-    "percent",
+    "NamedSplit",
     "ReadConfig",
     "Split",
+    "SplitBase",
     "testing",
     "disable_progress_bar",
     "is_dataset_on_gcs",
